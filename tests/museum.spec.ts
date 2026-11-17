@@ -5,9 +5,9 @@ const artworks=JSON.parse(readFileSync('public/artworks.json','utf8'))
 async function ready(page:any){await page.goto('./');await expect(page.locator('canvas')).toBeVisible();await expect(page.locator('.loading')).toHaveCount(0);await expect(page.locator('.error')).toHaveCount(0);await page.waitForTimeout(1200)}
 async function pixels(page:any){return sharp(await page.locator('canvas').screenshot()).resize(200,120).raw().toBuffer()}
 function difference(a:Buffer,b:Buffer){let d=0;for(let i=0;i<a.length;i++)d+=Math.abs(a[i]-b[i]);return d/a.length}
-test('8 real local images and matching details; no browser errors',async({page,request})=>{
- const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await ready(page)
- for(const a of artworks){const response=await request.get(a.image);expect(response.status()).toBe(200);expect(response.headers()['content-type']).toContain('image/jpeg');await page.locator('.collection-index button').filter({hasText:a.title}).click();await expect(page.locator('.detail h2')).toHaveText(a.title);await expect(page.locator('.detail .english')).toHaveText(a.title_en);await expect(page.locator('.detail')).toContainText(a.accession_number);await expect(page.locator('.source-link')).toHaveAttribute('href',a.source_url);await expect(page.locator('.detail-image img')).toHaveJSProperty('naturalWidth',a.image_hd_width||a.width);await page.getByRole('button',{name:'关闭作品详情'}).click()}
+test('20 real local images and matching details; no browser errors',async({page,request})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await ready(page);expect(artworks).toHaveLength(20)
+ for(const a of artworks){const response=await request.get(a.image);expect(response.status()).toBe(200);expect(response.headers()['content-type']).toContain('image/jpeg');await page.locator('.collection-index button').filter({hasText:a.title}).click();await expect(page.locator('.detail h2')).toHaveText(a.title);await expect(page.locator('.detail .english')).toHaveText(a.title_en);await expect(page.locator('.detail')).toContainText(a.accession_number);await expect(page.locator('.craft-note')).toHaveText(a.craft_note);await expect(page.locator('.detail')).toContainText(a.dimensions);await expect(page.locator('.source-link')).toHaveAttribute('href',a.source_url);await expect(page.locator('.detail-image img')).toHaveJSProperty('naturalWidth',a.image_hd_width||a.width);await page.getByRole('button',{name:'关闭作品详情'}).click()}
  expect(errors).toEqual([])
 })
 test('raycaster selects painting, switches selection and closes',async({page})=>{
@@ -34,4 +34,17 @@ test('empty collection, invalid data and missing image have visible feedback',as
  await page.route('**/artworks.json',r=>r.fulfill({json:[]}));await page.goto('./');await expect(page.locator('.error')).toContainText('暂无可展示');await page.unroute('**/artworks.json')
  await page.route('**/artworks.json',r=>r.fulfill({json:[{id:'bad'}]}));await page.reload();await expect(page.locator('.error')).toContainText('格式异常');await page.unroute('**/artworks.json')
  await page.route('**/artworks/*.jpg',r=>r.abort());await page.reload();await expect(page.locator('canvas')).toBeVisible();await expect(page.locator('.notice')).toContainText('图片暂未加载')
+})
+
+test('five categories each show four works and reset restores all twenty',async({page})=>{
+ await ready(page);await expect(page.locator('.collection-index button')).toHaveCount(20)
+ for(const code of ['MANDALA','BUDDHA','BODHISATTVA','PROTECTOR','MASTER']){
+  await page.getByLabel('题材分类').selectOption(code);await expect(page.locator('.collection-index button')).toHaveCount(4);await expect(page.locator('.filter-count')).toHaveText('当前 4 / 20 件')
+  const expected=artworks.filter((a:any)=>(a.category==='TARA'?'BODHISATTVA':a.category)===code)
+  for(const a of expected)await expect(page.locator('.collection-index')).toContainText(a.title)
+  await page.waitForTimeout(1200);await page.screenshot({path:`verification/category-${code}.png`})
+  await page.locator('.collection-index button').first().click();await expect(page.locator('.detail h2')).toHaveText(expected[0].title);await page.keyboard.press('Escape')
+ }
+ await page.getByRole('button',{name:'恢复初始视角',exact:true}).click();await expect(page.getByLabel('题材分类')).toHaveValue('all');await expect(page.locator('.collection-index button')).toHaveCount(20)
+ await page.locator('.craft-explainer summary').click();await expect(page.locator('.craft-explainer')).toContainText('不是真实馆藏')
 })
