@@ -25,21 +25,8 @@ export function architecture(scene:T.Scene) {
  box(4,.015,32,0,.018,0,new T.MeshStandardMaterial({color:0x4b242c,roughness:1}))
  for(const x of [-1.9,1.9])box(.025,.012,31.8,x,.03,0,gold)
  for(const z of [-15.85,15.85])box(3.8,.012,.025,0,.03,z,gold)
- for(const z of [-11,1,12]){box(2.4,.18,.85,0,.67,z,wood);box(2.25,.07,.74,0,.79,z,red);for(const x of [-.9,.9])box(.12,.6,.6,x,.3,z,wood)}
  // Fretwork screens flank the entrance without blocking wall exhibits.
  for(const x of [-5.5,5.5]){box(2.5,.15,.4,x,.15,17.5,wood);for(let i=0;i<7;i++)box(.065,2.1,.06,x-1.05+i*.35,1.25,17.5,gold);for(const y of [.3,2.2])box(2.5,.12,.13,x,y,17.5,red)}
- // Educational craft models: not accessioned museum objects or historical reconstructions.
- for(const x of [-3.7,3.7]){box(2.4,.18,1.15,x,.95,4,wood);for(const dx of [-.9,.9])for(const dz of [-.4,.4])box(.1,.85,.1,x+dx,.45,4+dz,wood)}
- for(const x of [-4.55,-2.85])box(.11,1.75,.12,x,1.8,4,gold)
- for(const y of [1.08,2.55])box(1.8,.1,.12,-3.7,y,4,wood)
- const threads=new T.InstancedMesh(new T.BoxGeometry(.009,1.4,.009),new T.MeshStandardMaterial({color:0xd1b88f}),34);for(let i=0;i<34;i++){matrix.makeTranslation(-4.48+i*.047,1.82,4);threads.setMatrixAt(i,matrix)}scene.add(threads)
- box(1.58,.35,.04,-3.7,1.4,4,new T.MeshStandardMaterial({color:0x793d3c}))
- label('织造结构 · 教学示意模型',-3.7,.69,4.62,2.2)
- const cloth=box(1.6,.035,.8,3.7,1.08,4,new T.MeshStandardMaterial({color:0xc0ae8e}));cloth.rotation.z=.08
- for(const dx of [-.88,.88])box(.09,.08,1,3.7+dx,1.12,4,wood)
- for(const dz of [-.5,.5])box(1.85,.08,.09,3.7,1.12,4+dz,wood)
- for(let i=0;i<4;i++){cylinder(.08,.1,.10,3.2+i*.3,1.17,4.25,gold);box(.025,.025,.52,3.2+i*.3,1.16,3.8,wood)}
- label('绷布与工具 · 教学示意模型',3.7,.69,4.62,2.2)
  label('坛 城  ·  M A N D A L A S',0,5.05,-18.70,6)
  scene.add(new T.HemisphereLight(0xffedcf,0x27313c,2.2))
  const light=new T.PointLight(0xffdcaa,100,48,1.5);light.position.set(0,5.4,1);scene.add(light)
