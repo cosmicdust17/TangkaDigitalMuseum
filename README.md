@@ -75,7 +75,7 @@ verification/              验收结果与本地截图
 
 **在线展馆：[https://cosmicdust17.github.io/TangkaDigitalMuseum/](https://cosmicdust17.github.io/TangkaDigitalMuseum/)**
 
-2026-11-17 GitHub Actions首次成功部署，公网版本6组真实Edge/WebGL浏览器验收全部通过，报告见 verification/online-results.json。后续更新：
+2026-11-17 已发布20件扩展版本，公网7组真实Edge/WebGL浏览器验收全部通过，报告见 verification/expansion-online-results.json（最初8件版本报告亦保留）。后续更新：
 
 ```powershell
 git status

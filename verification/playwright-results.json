@@ -3,7 +3,9 @@
     "argv": [
       "C:\\nvm4w\\nodejs\\node.exe",
       "F:\\code\\Tangka-Digital-Museum\\node_modules\\@playwright\\test\\cli.js",
-      "test"
+      "test",
+      "--timeout",
+      "180000"
     ],
     "configFile": "F:\\code\\Tangka-Digital-Museum\\playwright.config.ts",
     "rootDir": "F:/code/Tangka-Digital-Museum/tests",
@@ -35,7 +37,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 120000
+        "timeout": 180000
       }
     ],
     "filteredProjects": [
@@ -53,10 +55,10 @@
         "snapshotDir": "F:\\code\\Tangka-Digital-Museum\\tests",
         "testIgnore": [],
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
-        "timeout": 120000,
+        "timeout": 180000,
         "use": {
           "channel": "msedge",
-          "baseURL": "http://127.0.0.1:4173/TangkaDigitalMuseum/",
+          "baseURL": "https://cosmicdust17.github.io/TangkaDigitalMuseum/",
           "viewport": {
             "width": 1366,
             "height": 768
@@ -112,7 +114,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 120000,
+              "timeout": 180000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -122,12 +124,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 15982,
+                  "duration": 33449,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-17T15:33:48.320Z",
+                  "startTime": "2026-11-17T15:45:08.389Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -146,7 +148,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 120000,
+              "timeout": 180000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -156,12 +158,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4263,
+                  "duration": 11026,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-17T15:34:04.586Z",
+                  "startTime": "2026-11-17T15:45:42.077Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -180,7 +182,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 120000,
+              "timeout": 180000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -190,12 +192,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 25613,
+                  "duration": 33718,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-17T15:34:08.862Z",
+                  "startTime": "2026-11-17T15:45:53.119Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -214,7 +216,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 120000,
+              "timeout": 180000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -224,12 +226,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5843,
+                  "duration": 11593,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-17T15:34:34.488Z",
+                  "startTime": "2026-11-17T15:46:26.861Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -248,7 +250,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 120000,
+              "timeout": 180000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -258,12 +260,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 14361,
+                  "duration": 21395,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-17T15:34:40.346Z",
+                  "startTime": "2026-11-17T15:46:38.471Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -282,7 +284,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 120000,
+              "timeout": 180000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -292,12 +294,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 596,
+                  "duration": 4647,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-17T15:34:54.729Z",
+                  "startTime": "2026-11-17T15:46:59.881Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -316,7 +318,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 120000,
+              "timeout": 180000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -326,12 +328,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10875,
+                  "duration": 18762,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-17T15:34:55.344Z",
+                  "startTime": "2026-11-17T15:47:04.537Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -349,8 +351,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-17T15:33:47.678Z",
-    "duration": 78795.165,
+    "startTime": "2026-11-17T15:45:07.529Z",
+    "duration": 136038.282,
     "expected": 7,
     "skipped": 0,
     "unexpected": 0,
